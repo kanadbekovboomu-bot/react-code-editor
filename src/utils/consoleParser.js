@@ -58,6 +58,8 @@ export function filterLogs(logs = [], { filterLevel = 'all', searchQuery = '' } 
   const query = searchQuery.trim().toLowerCase();
 
   return logs.filter(item => {
+    if (!item || typeof item !== 'object') return false;
+
     // Level match
     if (filterLevel !== 'all' && item.level !== filterLevel) {
       return false;
